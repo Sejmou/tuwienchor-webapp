@@ -1,0 +1,1 @@
+MuseScore click automation script requires OpenCV (`pip install opencv-python`)
