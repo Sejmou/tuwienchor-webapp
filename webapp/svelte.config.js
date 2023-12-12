@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-node'; // default was adapter-auto; adapter-node gives access to node modules on the server
+import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
 /** @type {import('@sveltejs/kit').Config} */
