@@ -10,7 +10,9 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"generate": "drizzle-kit generate:pg",
+		"introspect": "drizzle-kit introspect:pg"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
@@ -22,6 +24,7 @@
 		"@typescript-eslint/parser": "^6.0.0",
 		"autoprefixer": "^10.4.16",
 		"daisyui": "^4.4.2",
+		"drizzle-kit": "^0.20.6",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-svelte": "^2.30.0",
@@ -40,7 +43,9 @@
 		"@aws-sdk/client-s3": "^3.472.0",
 		"@aws-sdk/s3-request-presigner": "^3.472.0",
 		"dotenv": "^16.3.1",
+		"drizzle-orm": "^0.29.1",
 		"litepicker": "^2.0.12",
+		"postgres": "^3.4.3",
 		"svelte-persisted-store": "^0.7.0",
 		"zod": "^3.22.4"
 	}
