@@ -1,40 +1,35 @@
 import { env } from '$env/dynamic/private';
-import AWS from 'aws-sdk';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+import { GetObjectCommand, S3 } from '@aws-sdk/client-s3';
 
-export const s3 = new AWS.S3({
-	accessKeyId: env.AWS_ACCESS_KEY_ID,
-	secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+export const s3 = new S3({
+	credentials: {
+		accessKeyId: env.AWS_ACCESS_KEY_ID,
+		secretAccessKey: env.AWS_SECRET_ACCESS_KEY
+	},
+
 	region: env.AWS_REGION,
+
+	// The transformation for endpoint is not implemented.
+	// Refer to UPGRADING.md on aws-sdk-js-v3 for changes needed.
+	// Please create/upvote feature request on aws-sdk-js-codemod for endpoint.
 	endpoint: env.AWS_ENDPOINT
 });
 
-export function getObjects(s3: AWS.S3, bucketName: string, prefix?: string) {
+export async function getObjects(s3: S3, bucketName: string, prefix?: string) {
 	const params = {
 		Bucket: bucketName,
 		Prefix: prefix || ''
 	};
+	const result = await s3.listObjects(params);
+	if (!result.Contents) {
+		return [];
+	}
 
-	return new Promise<AWS.S3.Object[]>((resolve, reject) => {
-		s3.listObjectsV2(params, (err, data) => {
-			if (err) {
-				console.error('Error listing objects:', err);
-				reject();
-			}
-
-			if (!data) {
-				throw new Error('No data returned from S3');
-			}
-
-			if (!data.Contents) {
-				return resolve([]);
-			}
-
-			return resolve(data.Contents);
-		});
-	});
+	return result.Contents;
 }
 
-export async function getSubpaths(s3: AWS.S3, bucketName: string, prefix?: string) {
+export async function getSubpaths(s3: S3, bucketName: string, prefix?: string) {
 	// getObjects returns any object (with its associated 'path' or key) that starts with the prefix
 	// however, we only want to extract the 'folder' names
 	const objects = await getObjects(s3, bucketName, prefix);
@@ -61,9 +56,10 @@ export function generatePresignedUrl(
 ) {
 	const params = {
 		Bucket: bucketName,
-		Key: key,
-		Expires: expirationTimeSeconds
+		Key: key
 	};
 
-	return s3.getSignedUrlPromise('getObject', params);
+	return getSignedUrl(s3, new GetObjectCommand(params), {
+		expiresIn: expirationTimeSeconds
+	});
 }
