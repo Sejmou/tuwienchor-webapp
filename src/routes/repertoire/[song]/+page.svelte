@@ -3,6 +3,7 @@
 	import TrackVolume from './TrackVolume.svelte';
 	import { get } from 'svelte/store';
 	import { page } from '$app/stores';
+	import AutoMix from './AutoMix.svelte';
 	type PlaybackStore = ReturnType<typeof createPlaybackStore>;
 	export let data;
 
@@ -53,7 +54,7 @@
 	}
 </script>
 
-<main class="w-full max-w-screen-lg mx-auto my-10 p-6 rounded-md shadow-md">
+<main class="w-full max-w-screen-lg mx-auto rounded-md shadow-md">
 	<a class="btn mb-2" href="/repertoire">Zur Übersicht</a>
 	<h1 class="text-2xl font-bold mb-4">{data.songName}</h1>
 
@@ -141,6 +142,8 @@
 			</button>
 		</a>
 	</div>
+
+	<AutoMix {playbackStore} />
 
 	<div class="grid grid-cols-2 gap-2">
 		{#each playbackStore.tracks as track}
