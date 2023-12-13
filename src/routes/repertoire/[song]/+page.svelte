@@ -35,9 +35,21 @@
 		}
 	}
 
+	// part of nasty workaround for progress slider
+	let displayPlayingDespitePaused = false;
 	function handleProgressSliderInput(event: any) {
 		const target = event.target as HTMLInputElement;
+		const isPlaying = get(playbackStore.isPlaying);
+		// hoping this extra logic for if (isPlaying) will make things less janky
+		displayPlayingDespitePaused = true;
+		if (isPlaying) playbackStore.pause();
 		playbackStore.seekTo(target.valueAsNumber);
+
+		if (isPlaying)
+			setTimeout(() => {
+				playbackStore.play();
+				displayPlayingDespitePaused = false;
+			}, 100);
 	}
 </script>
 
@@ -81,7 +93,7 @@
 
 		<!-- Play Button with SVG icon -->
 		<button class="btn btn-accent" on:click={() => handlePlayPause(playbackStore)}>
-			{#if $isPlaying}
+			{#if $isPlaying || displayPlayingDespitePaused}
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
