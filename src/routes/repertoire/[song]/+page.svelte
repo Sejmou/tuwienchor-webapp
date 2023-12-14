@@ -70,7 +70,6 @@
 
 <div class="w-full card shadow-xl bg-base-300">
 	<div class="card-body flex flex-col w-full gap-2">
-		<a class="btn mb-2" href="/repertoire">Zur Übersicht</a>
 		<h1 class="text-2xl font-bold mb-4">
 			{data.songName.substring(0, 2)}
 			{data.songName.substring(2).replaceAll('_', ' ')}
