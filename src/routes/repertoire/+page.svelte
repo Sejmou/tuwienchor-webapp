@@ -1,17 +1,13 @@
 <script lang="ts">
+	import PlaylistItem from './PlaylistItem.svelte';
+
 	export let data;
 </script>
 
-<main class="mx-auto">
-	<p class="mb-2">Das Repertoire umfasst aktuell:</p>
+<main>
 	<ul class="list-disc pl-4">
-		{#each data.songs as path}
-			<li class="mb-2 hover:underline">
-				<a href={`/repertoire/${path}`}>
-					{path}
-				</a>
-			</li>
+		{#each data.songs as songName}
+			<PlaylistItem {songName} />
 		{/each}
 	</ul>
-	<p>Einfach auf die Songs klicken um sie anzuhören!</p>
 </main>

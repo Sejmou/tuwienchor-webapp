@@ -44,6 +44,7 @@
 		"@aws-sdk/s3-request-presigner": "^3.472.0",
 		"dotenv": "^16.3.1",
 		"drizzle-orm": "^0.29.1",
+		"iconify-icon": "^1.0.8",
 		"litepicker": "^2.0.12",
 		"postgres": "^3.4.3",
 		"svelte-persisted-store": "^0.7.0",
