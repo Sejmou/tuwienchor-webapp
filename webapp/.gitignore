@@ -1,0 +1,16 @@
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# contains DB connection string, hence should be gitignored
+drizzle.config.ts
+
+# not sure if this should be gitignored, but I don't know what to do with it for now
+/drizzle/
