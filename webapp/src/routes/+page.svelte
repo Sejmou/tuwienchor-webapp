@@ -1,11 +1,3 @@
-<script lang="ts">
-</script>
-
-<svelte:head>
-	<title>TU Wien Chor Webapp</title>
-</svelte:head>
-
-<main class="flex flex-col items-center w-full gap-2 max-w-screen-lg mx-auto">
-	<h1>Hallo!</h1>
-	<p>Mehr folgt hier in Kürze. Vielleicht 🙃</p>
-</main>
+<h1 class="mt-16 scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl">
+	Acapella Songs
+</h1>
