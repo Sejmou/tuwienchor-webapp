@@ -1,3 +1,4 @@
+# %%
 import os
 from utils.musescore import create_part_mp3s
 from os.path import basename, splitext
@@ -20,14 +21,6 @@ def load_lines(file_path):
         lines = [l.strip() for l in f.readlines()]
     return lines
 
-
-ms_files = load_lines("data/relevant_files")
-
-# %%
-mp3_folder = "data/mp3s/"
-os.makedirs(mp3_folder, exist_ok=True)
-
-
 def export_mp3s(ms_file, mp3_folder):
     folder_name = splitext(basename(ms_file))[0]
     subfolder_path = os.path.join(mp3_folder, folder_name)
@@ -37,10 +30,17 @@ def export_mp3s(ms_file, mp3_folder):
     create_part_mp3s(ms_file, subfolder_path)
     print(f"Created mp3s for {folder_name}")
 
+# %%
+ms_files = get_musescore_files("data/mscz_files")
+ms_files
+mp3_folder = "data/mp3s/"
+os.makedirs(mp3_folder, exist_ok=True)
+
+
+
 
 # %%
 for ms_file in ms_files:
     export_mp3s(ms_file, mp3_folder)
-# %%
-ms_files
+
 # %%
