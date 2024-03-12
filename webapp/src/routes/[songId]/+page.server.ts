@@ -17,6 +17,6 @@ export const load: PageServerLoad = async ({ params }) => {
 	}
 
 	return {
-		song: song[0]
+		song: song[0]!
 	};
 };
