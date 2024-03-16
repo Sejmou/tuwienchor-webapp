@@ -50,6 +50,7 @@
 		"jszip": "^3.10.1",
 		"lucide-svelte": "^0.354.0",
 		"opensheetmusicdisplay": "^1.8.7",
+		"osmd-audio-player": "^0.7.0",
 		"postgres": "^3.4.3",
 		"tailwind-merge": "^2.2.1",
 		"tailwind-variants": "^0.2.0"

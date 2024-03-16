@@ -29,6 +29,9 @@ dependencies:
   opensheetmusicdisplay:
     specifier: ^1.8.7
     version: 1.8.7
+  osmd-audio-player:
+    specifier: ^0.7.0
+    version: 0.7.0
   postgres:
     specifier: ^3.4.3
     version: 3.4.3
@@ -2096,6 +2099,10 @@ packages:
     resolution: {integrity: sha512-bj3If1sm1FYJN0tJMV2BJNrwoeQ6xfrTt+rbmFvUytyxUhklLlW79MR4uwQ+upzrNJLVy012TnC7oZqSpEglSw==}
     dev: false
 
+  /@types/vexflow@3.0.1:
+    resolution: {integrity: sha512-uocoyb4hjVJ2sBsf7Oe4gGrwOaCohGsRV6zGOmJOFUrM8iI3OkQjNS2wDjt6gCo3Kg6tf3mRNnqnDFK57TZHZA==}
+    dev: false
+
   /@typescript-eslint/eslint-plugin@7.1.1(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)(typescript@5.4.2):
     resolution: {integrity: sha512-zioDz623d0RHNhvx0eesUmGfIjzrk18nSBC8xewepKXbBvN/7c1qImV7Hg8TI1URTxKax7/zxfxj3Uph8Chcuw==}
     engines: {node: ^16.0.0 || >=18.0.0}
@@ -2295,6 +2302,10 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
+  /adsr@1.0.1:
+    resolution: {integrity: sha512-thr9LK4jxApOzBA33IWOA83bXJFbyfbeozpHXyrMQOIhUni198uRxXqDhobW0S/51iokqty2Yz2WbLZbE6tntQ==}
+    dev: false
+
   /agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
@@ -2403,6 +2414,18 @@ packages:
   /assertion-error@1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
     dev: true
+
+  /audio-loader@0.5.0:
+    resolution: {integrity: sha512-mEoYRjZhqkBSen/X9i2PNosqvafEsur8bI5MNoPr0wsJu9Nzlul3Yv1elYeMPsXxTxYhXLY8AZlScBvaK4mydg==}
+    dev: false
+
+  /automation-events@2.0.19:
+    resolution: {integrity: sha512-6RUNmFkmTYXq/W+ovdwLdqqj44rGh9+dGjg4qLaktVHYT1+c+PdlYAkaCn/H2AaqprW9NZhK+jsXT4t8izPV+w==}
+    engines: {node: '>=10.15.3'}
+    dependencies:
+      '@babel/runtime': 7.24.0
+      tslib: 2.6.2
+    dev: false
 
   /autoprefixer@10.4.18(postcss@8.4.35):
     resolution: {integrity: sha512-1DKbDfsr6KUElM6wg+0zRNkB/Q7WcKYAaK+pzXn+Xqmszm/5Xa9coeNdtP88Vi+dPzZnMjhge8GIV49ZQkDa+g==}
@@ -3869,6 +3892,15 @@ packages:
       setimmediate: 1.0.5
     dev: false
 
+  /jszip@3.4.0:
+    resolution: {integrity: sha512-gZAOYuPl4EhPTXT0GjhI3o+ZAz3su6EhLrKUoAivcKqyqC7laS5JEv4XWZND9BgcDcF83vI85yGbDmDR6UhrIg==}
+    dependencies:
+      lie: 3.3.0
+      pako: 1.0.11
+      readable-stream: 2.3.8
+      set-immediate-shim: 1.0.1
+    dev: false
+
   /keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
     dependencies:
@@ -4040,6 +4072,10 @@ packages:
     dependencies:
       braces: 3.0.2
       picomatch: 2.3.1
+
+  /midimessage@1.0.5:
+    resolution: {integrity: sha512-MPJ2tDupFOfZB5/PLp8fri1IS4fd9hPj0Bio//FBhWRQ+TsJA7/49CF1aJyraDxa0Jq8zMHAwrwXl2GINvLvgw==}
+    dev: false
 
   /mimic-fn@4.0.0:
     resolution: {integrity: sha512-vqiC06CuhBTUdZH+RYl8sFrL096vA45Ok5ISO6sE/Mr1jRbGH4Csnhi8f3wKVl7x8mO4Au7Ir9D3Oyv1VYMFJw==}
@@ -4307,6 +4343,14 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /note-parser@1.1.0:
+    resolution: {integrity: sha512-YTqWQBsRp40EFrEznnkGtmx68gcgOQ8CdoBspqGBA3G1/4mJwIYbDe/vuNpX3oGX2DhP7b1dBgTmj7p3Zr0P1Q==}
+    dev: false
+
+  /note-parser@2.0.1:
+    resolution: {integrity: sha512-w9o6Fv46y3NsFxeezTZSmftBtUM/ypme6iZWVrTJvvsD5RN+w0XNDePWtfreNrZFL3jSjBFhadPoXb+pJO4UdA==}
+    dev: false
+
   /npm-run-path@5.3.0:
     resolution: {integrity: sha512-ppwTtiJZq0O/ai0z7yfudtBpWIoxM8yE6nHi1X47eFR2EWORqfbu6CnPlNsjeN683eT0qG6H/Pyf9fCcvjnnnQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -4346,6 +4390,16 @@ packages:
       mimic-fn: 4.0.0
     dev: true
 
+  /opensheetmusicdisplay@0.8.7:
+    resolution: {integrity: sha512-KBfWrhKhCTR2GaG9xnj9bIgYJd2/k3YZdQ9FPQDjbfVttMTD/CNBf1VNBU0cSZfU4pkRPpF16It+uACxK+wYQg==}
+    dependencies:
+      '@types/vexflow': 3.0.1
+      jszip: 3.4.0
+      loglevel: 1.9.1
+      typescript-collections: 1.3.3
+      vexflow: 1.2.93
+    dev: false
+
   /opensheetmusicdisplay@1.8.7:
     resolution: {integrity: sha512-Ait7zH9h3Dbzzvz/9wC9pruveIaYARa03XrrHfANh9A39y1rDtk9OErVKbMotwrp6R87oN5oCJmyTH8swxEBbg==}
     dependencies:
@@ -4372,6 +4426,14 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /osmd-audio-player@0.7.0:
+    resolution: {integrity: sha512-77DlsBYavexSNxadpil3Q3tvoJPSAWQ2h2sRee/kRMwQiS+qxuz1Z+kTN1QW7js3T+KqpUyOYn02+Q5MRqsfbw==}
+    dependencies:
+      opensheetmusicdisplay: 0.8.7
+      soundfont-player: 0.12.0
+      standardized-audio-context: 24.1.26
+    dev: false
 
   /p-limit@3.1.0:
     resolution: {integrity: sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==}
@@ -4927,6 +4989,14 @@ packages:
     dev: false
     optional: true
 
+  /sample-player@0.5.5:
+    resolution: {integrity: sha512-VQ9pXPJ1m/eTH8QK6OQ8Dn/HSVToNyY9w9vnv+y/yjkJeRm87tJ/gBEm66jItfSLhKe6VG1DfX8+oT+Mg7QUpg==}
+    dependencies:
+      adsr: 1.0.1
+      midimessage: 1.0.5
+      note-parser: 1.1.0
+    dev: false
+
   /sander@0.5.1:
     resolution: {integrity: sha512-3lVqBir7WuKDHGrKRDn/1Ye3kwpXaDOMsiRP1wd6wpZW56gJhsbp5RqQpA6JG/P+pkXizygnr1dKR8vzWaVsfA==}
     dependencies:
@@ -4952,6 +5022,11 @@ packages:
   /set-cookie-parser@2.6.0:
     resolution: {integrity: sha512-RVnVQxTXuerk653XfuliOxBP81Sf0+qfQE73LIYKcyMYHG94AuH0kgrQpRDuTZnSmjpysHmzxJXKNfa6PjFhyQ==}
     dev: true
+
+  /set-immediate-shim@1.0.1:
+    resolution: {integrity: sha512-Li5AOqrZWCVA2n5kryzEmqai6bKSIvpz5oUJHPVj6+dsbD3X1ixtsY5tEnsaNpH3pFAHmG8eIHUrtEtohrg+UQ==}
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   /setimmediate@1.0.5:
     resolution: {integrity: sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA==}
@@ -5055,6 +5130,14 @@ packages:
       sander: 0.5.1
     dev: true
 
+  /soundfont-player@0.12.0:
+    resolution: {integrity: sha512-8BJIsAt7h1PK3thSZDgF6zecgGhYkK74JnZO8WRZi3h34qG6H/DYlnv7cpRvL7Q9C8N6qld4Qwj7nJsX1gYjEA==}
+    dependencies:
+      audio-loader: 0.5.0
+      note-parser: 2.0.1
+      sample-player: 0.5.5
+    dev: false
+
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -5089,6 +5172,14 @@ packages:
   /stackback@0.0.2:
     resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
     dev: true
+
+  /standardized-audio-context@24.1.26:
+    resolution: {integrity: sha512-Grm5EZGcg7hDmLZWbyZ/93dBzlRii9HUmRjmyyatissEzdBPxeA4Ptt9VjtYnd0mEOzxxbS222SxpbYnV57JFA==}
+    dependencies:
+      '@babel/runtime': 7.24.0
+      automation-events: 2.0.19
+      tslib: 2.6.2
+    dev: false
 
   /std-env@3.7.0:
     resolution: {integrity: sha512-JPbdCEQLj1w5GilpiHAx3qJvFndqybBysA3qUOnznweH4QbNYUsW/ea8QzSrnh0vNsezMMw5bcVool8lM0gwzg==}

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import JSZip from 'jszip';
-	import { browser } from '$app/environment';
 	import type { PageData } from './$types';
 	import SheetMusic from '$lib/components/SheetMusic/sheet-music.svelte';
 	export let data: PageData;
@@ -11,13 +10,51 @@
 		const response = await fetch(`/mxl/${song.id}.mxl`);
 		const jsZip = new JSZip();
 		const archive = await jsZip.loadAsync(await response.arrayBuffer());
-		const musicXml = archive.file('score.xml')?.async('string');
+		const musicXml = await archive.file('score.xml')?.async('string');
 		if (!musicXml) {
 			throw new Error('No score.xml found in MXL file');
 		}
-		return musicXml;
+		return convertNonDrumInstrumentsToPiano(musicXml);
+	}
+
+	function convertNonDrumInstrumentsToPiano(musicXml: string): string {
+		const parser: DOMParser = new DOMParser();
+		const xmlDoc: Document = parser.parseFromString(musicXml, 'application/xml');
+
+		const midiInstruments: HTMLCollectionOf<Element> =
+			xmlDoc.getElementsByTagName('midi-instrument');
+
+		for (let i = 0; i < midiInstruments.length; i++) {
+			// Find the midi-channel for this instrument
+			const midiChannelElements: HTMLCollectionOf<Element> =
+				midiInstruments[i]!.getElementsByTagName('midi-channel');
+
+			if (midiChannelElements.length > 0) {
+				const midiChannel: Element = midiChannelElements[0]!;
+
+				const isDrumPart = midiChannel.textContent === '10';
+				if (!isDrumPart) {
+					const midiProgramElements: HTMLCollectionOf<Element> =
+						midiInstruments[i]!.getElementsByTagName('midi-program');
+
+					if (midiProgramElements.length > 0) {
+						const midiProgram: Element = midiProgramElements[0]!;
+						midiProgram.textContent = '1'; // '1' == Grand Piano Sound
+					}
+				}
+			}
+		}
+
+		// Serialize the DOM object back into a string
+		const serializer: XMLSerializer = new XMLSerializer();
+		const updatedXmlString: string = serializer.serializeToString(xmlDoc);
+		return updatedXmlString;
 	}
 </script>
+
+<svelte:head>
+	<title>{song.name} | Acapella Songs</title>
+</svelte:head>
 
 <div class="mx-auto flex max-w-screen-lg flex-col items-center gap-2">
 	<Button href="/" variant="outline">Back to Overview</Button>
