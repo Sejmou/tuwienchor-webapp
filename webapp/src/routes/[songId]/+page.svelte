@@ -2,7 +2,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import JSZip from 'jszip';
 	import type { PageData } from './$types';
-	import SheetMusic from '$lib/components/SheetMusic/sheet-music.svelte';
+	import { SheetMusicPlayer } from '$lib/components/SheetMusicPlayer';
 	export let data: PageData;
 	$: song = data.song;
 
@@ -62,9 +62,9 @@
 		{song.name}
 	</h1>
 	{#await loadMusicXML()}
-		<p>Loading...</p>
+		<p>Loading score...</p>
 	{:then musicXml}
-		<SheetMusic {musicXml} />
+		<SheetMusicPlayer {musicXml} />
 	{:catch error}
 		<p>Error: {error.message}</p>
 	{/await}
