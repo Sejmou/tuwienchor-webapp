@@ -41,11 +41,29 @@ export async function createSheetMusicPlayer(musicXml: string, scoreContainer: H
 async function loadScore(musicXml: string, scoreContainer: HTMLDivElement) {
 	const OpenSheetMusicDisplay = (await import('opensheetmusicdisplay')).OpenSheetMusicDisplay;
 	const osmd = new OpenSheetMusicDisplay(scoreContainer, {
-		// makes margins more narrow and removes stuff like title, composer, etc.
-		drawingParameters: 'compacttight'
+		drawTitle: false,
+		drawSubtitle: false,
+		drawComposer: false,
+		drawLyricist: false
 	});
+	osmd.EngravingRules.RenderSingleHorizontalStaffline = true;
+	osmd.EngravingRules.PageTopMargin = 0;
+	osmd.EngravingRules.PageBottomMargin = 0;
+	osmd.EngravingRules.PageLeftMargin = 0;
+	osmd.EngravingRules.PageRightMargin = 0;
+	// uncomment the following for specific fixed measure width
+	// osmd.EngravingRules.FixedMeasureWidth = true;
+	// osmd.EngravingRules.FixedMeasureWidthFixedValue = 16;
+	// TODO: figure out how to reduce distance between staves for every part
+	// stuff below doesn't work
+	// osmd.EngravingRules.BetweenStaffDistance = 0;
+	// osmd.EngravingRules.StaffDistance = 0;
+	// osmd.EngravingRules.BetweenStaffDistance = 0;
+	// osmd.EngravingRules.BetweenStaffLinesDistance = 0;
 	await osmd.load(musicXml);
 	osmd.render();
+
+	console.log(osmd.Sheet.Parts.map((p) => p.NameLabel.text));
 	return osmd;
 }
 

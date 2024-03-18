@@ -14,6 +14,6 @@
 		<p>Error loading score: {error.message}</p>
 	{/await}
 </div>
-<div class="w-[95vw]">
+<div class="w-[95vw] overflow-x-auto">
 	<div class="w-full" bind:this={container} />
 </div>
